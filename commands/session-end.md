@@ -3,6 +3,18 @@ description: End current development session with comprehensive summary
 allowed-tools: Bash(git:*), Bash(cat:*), Bash(echo:*), Bash(wc:*), Bash(grep:*), Bash(rm:*), Bash(truncate:*), Bash(env:*), Bash(date:*)
 ---
 
+## Context
+
+- Current session file: !`cat .claude/sessions/.current-session 2>/dev/null || echo "No active session"`
+- Session start time: !`head -n 20 "$(cat .claude/sessions/.current-session 2>/dev/null)" 2>/dev/null | grep -E "Started:|##" | head -2`
+- Git status summary: !`git status --porcelain 2>/dev/null | wc -l && echo "files changed"`
+- Git diff summary: !`git diff --stat 2>/dev/null | tail -1`
+- Recent commits: !`git log --oneline -5 --since="$(stat -f %Sm -t %Y-%m-%d .claude/sessions/.current-session 2>/dev/null || date +%Y-%m-%d)" 2>/dev/null`
+- Current branch: !`git branch --show-current 2>/dev/null`
+- Current timestamp: !`date '+%Y-%m-%d %I:%M %p'`
+
+## Your task
+
 End the current development session by:
 
 1. Check `.claude/sessions/.current-session` for the active session

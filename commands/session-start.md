@@ -1,8 +1,19 @@
 ---
 description: Start a new development session with tracking
 argument-hint: [session-name]
-allowed-tools: Bash(mkdir:*), Bash(touch:*), Bash(date:*), Bash(echo:*), Bash(env:*)
+allowed-tools: Bash(mkdir:*), Bash(touch:*), Bash(date:*), Bash(echo:*), Bash(env:*), Bash(git:*), Bash(pwd:*)
 ---
+
+## Context
+
+- Current directory: !`pwd`
+- Current active session: !`cat .claude/sessions/.current-session 2>/dev/null || echo "No active session"`
+- Git branch and status: !`git branch --show-current 2>/dev/null && git status --porcelain 2>/dev/null | wc -l && echo "files changed"`
+- Sessions directory: !`ls -la .claude/sessions/ 2>/dev/null || echo "No sessions directory"`
+- Current timestamp: !`date '+%Y-%m-%d %I:%M %p'`
+- Session filename format: !`date '+%Y-%m-%d-%H%M'`
+
+## Your task
 
 Start a new development session by creating a session file in `.claude/sessions/` with the format `YYYY-MM-DD-HHMM-$ARGUMENTS.md` (or just `YYYY-MM-DD-HHMM.md` if no name provided).
 

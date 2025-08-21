@@ -4,6 +4,18 @@ argument-hint: [update-notes]
 allowed-tools: Bash(git:*), Bash(cat:*), Bash(echo:*), Bash(date:*), Bash(wc:*), Bash(grep:*), Bash(env:*)
 ---
 
+## Context
+
+- Current session file: !`cat .claude/sessions/.current-session 2>/dev/null || echo "No active session"`
+- Git status: !`git status --porcelain 2>/dev/null`
+- Git branch: !`git branch --show-current 2>/dev/null`
+- Recent commits: !`git log --oneline -3 2>/dev/null`
+- Files changed: !`git status --porcelain 2>/dev/null | wc -l` files
+- Current timestamp: !`date '+%Y-%m-%d %I:%M %p'`
+- Last session update: !`tail -n 5 "$(cat .claude/sessions/.current-session 2>/dev/null)" 2>/dev/null | grep -E "###.*Update.*[0-9]" | tail -1`
+
+## Your task
+
 Update the current development session by:
 
 1. Check if `.claude/sessions/.current-session` exists to find the active session
