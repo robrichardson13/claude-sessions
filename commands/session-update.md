@@ -1,9 +1,15 @@
+---
+description: Update current development session with progress and changes
+argument-hint: [update-notes]
+allowed-tools: Bash(git:*), Bash(cat:*), Bash(echo:*), Bash(date:*), Bash(wc:*), Bash(grep:*), Bash(env:*)
+---
+
 Update the current development session by:
 
 1. Check if `.claude/sessions/.current-session` exists to find the active session
-2. If no active session, inform user to start one with `/project:session-start`
+2. If no active session, inform user to start one with `/session-start`
 3. If session exists, append to the session file with:
-   - Current timestamp
+   - Current timestamp using: `date '+%Y-%m-%d %I:%M %p'` (e.g., "2024-08-20 7:14 PM")
    - The update: $ARGUMENTS (or if no arguments, summarize recent activities)
    - Git status summary:
      * Files added/modified/deleted (from `git status --porcelain`)
@@ -15,11 +21,13 @@ Update the current development session by:
    - Solutions implemented
    - Code changes made
 
+**Important**: Always use `date '+%Y-%m-%d %I:%M %p'` for timestamps. This ensures correct year, 12-hour format with AM/PM, and local timezone.
+
 Keep updates concise but comprehensive for future reference.
 
 Example format:
 ```
-### Update - 2025-06-16 12:15 PM
+### Update - 2024-08-20 7:14 PM
 
 **Summary**: Implemented user authentication
 

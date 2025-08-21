@@ -1,37 +1,55 @@
+---
+description: Show help for session management system
+---
+
 Show help for the session management system:
 
 ## Session Management Commands
 
-The session system helps document development work for future reference.
+The session system helps document development work for future reference and provides comprehensive tracking of progress, issues, and solutions.
 
-### Available Commands:
+### Core Commands:
 
-- `/project:session-start [name]` - Start a new session with optional name
-- `/project:session-update [notes]` - Add notes to current session  
-- `/project:session-end` - End session with comprehensive summary
-- `/project:session-list` - List all session files
-- `/project:session-current` - Show current session status
-- `/project:session-help` - Show this help
+- `/session-start [name]` - Start a new development session with optional name
+- `/session-update [notes]` - Add progress notes to current session  
+- `/session-end` - End session with comprehensive summary
+- `/session-current` - Show current session status and progress
+
+### Management Commands:
+
+- `/session-list` - List all session files with details
+- `/session-help` - Show this help
 
 ### How It Works:
 
-1. Sessions are markdown files in `.claude/sessions/`
-2. Files use `YYYY-MM-DD-HHMM-name.md` format
-3. Only one session can be active at a time
-4. Sessions track progress, issues, solutions, and learnings
+1. **Sessions** are markdown files stored in `.claude/sessions/`
+2. **File naming**: `YYYY-MM-DD-HHMM-name.md` format
+3. **Active tracking**: Only one session can be active at a time via `.current-session`
+4. **Comprehensive logging**: Tracks progress, git changes, issues, solutions, and learnings
 
 ### Best Practices:
 
-- Start a session when beginning significant work
-- Update regularly with important changes or findings
-- End with thorough summary for future reference
-- Review past sessions before starting similar work
+- **Start early**: Begin a session when starting significant work
+- **Update regularly**: Log important changes, findings, and decisions
+- **End thoroughly**: Provide comprehensive summary for future reference
+- **Search history**: Review past sessions before starting similar work
+- **Export data**: Use export for reporting or analysis
 
 ### Example Workflow:
 
 ```
-/project:session-start refactor-auth
-/project:session-update Added Google OAuth restriction
-/project:session-update Fixed Next.js 15 params Promise issue  
-/project:session-end
+/session-start refactor-auth
+/session-update Added Google OAuth restriction
+/session-update Fixed Next.js 15 params Promise issue  
+/session-end
+```
+
+### Advanced Usage:
+
+```
+# Basic workflow example
+/session-start refactor-auth
+/session-update Added Google OAuth restriction
+/session-update Fixed Next.js 15 params Promise issue
+/session-end
 ```

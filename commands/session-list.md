@@ -1,3 +1,8 @@
+---
+description: List all development sessions with details
+allowed-tools: Bash(ls:*), Bash(cat:*), Bash(head:*), Bash(sort:*), Bash(grep:*)
+---
+
 List all development sessions by:
 
 1. Check if `.claude/sessions/` directory exists
