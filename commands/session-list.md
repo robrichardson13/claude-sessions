@@ -1,14 +1,6 @@
 ---
 description: List all development sessions with details
-allowed-tools: Bash(ls:*), Bash(cat:*), Bash(head:*), Bash(sort:*), Bash(grep:*), Bash(wc:*)
 ---
-
-## Context
-
-- Sessions directory check: !`ls -la .claude/sessions/ 2>/dev/null || echo "No sessions directory"`
-- Session files count: !`ls .claude/sessions/*.md 2>/dev/null | wc -l || echo "0"` files
-- Current active session: !`cat .claude/sessions/.current-session 2>/dev/null || echo "No active session"`
-- Recent session files: !`ls -t .claude/sessions/*.md 2>/dev/null | head -5 || echo "No session files"`
 
 ## Your task
 
