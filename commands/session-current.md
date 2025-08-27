@@ -11,10 +11,22 @@ Show the current session status by:
 3. If active session exists:
    - Show session name and filename
    - Calculate and show duration since start (using local timezone)
-   - Show last few updates
+   - **Key Learnings Summary**: Extract and highlight important findings from session updates
+   - **Files Recently Edited**: List files modified with timestamps and brief descriptions
+   - **Unresolved Issues**: Current blockers or questions that need attention
+   - **Next Steps**: Based on incomplete todos and context notes
+   - Show last few updates (condensed)
    - Show current goals/tasks
+   - **Context for Resumption**: Critical information for picking up work
    - Remind user of available commands
 
 **Important**: Always use `date '+%Y-%m-%d %I:%M %p'` for timestamps. This ensures correct year, 12-hour format with AM/PM, and local timezone.
 
-Keep the output concise and informative.
+**Information Extraction**: When reading the session file:
+- Scan all "Key Findings/Learnings" sections and consolidate the most important ones
+- Look for "Context for Next Session" sections in updates
+- Identify patterns in "Problems & Solutions" that indicate ongoing issues
+- Extract file modification information from "Files Edited" sections
+- Summarize incomplete todos and their context
+
+Keep the output concise but comprehensive enough for effective work resumption. Focus on actionable information that helps understand where work left off and what needs attention.

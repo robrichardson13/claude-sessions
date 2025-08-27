@@ -11,8 +11,10 @@ Start a new development session by creating a session file in `.claude/sessions/
 
 **Context-Aware Initialization**: Before creating the session file, check if we're starting mid-conversation by detecting:
 - Active todo lists with completed/in-progress tasks
-- Recent tool usage or file modifications
+- Recent tool usage or file modifications  
 - Git working directory changes (uncommitted files)
+- Recently modified files (check file modification times)
+- Current investigation topics or problems being debugged
 
 ### For Fresh Conversations (No Context)
 Create a basic session file with:
@@ -28,11 +30,15 @@ Create a session file that includes the basic structure PLUS an initial progress
 2. Session overview section noting that tracking began mid-conversation
 3. Goals section (infer from context or ask if unclear)
 4. **Initial Progress Entry** with current timestamp including:
+   - **Current Context**: Brief summary of what was being worked on when session started
+   - **Recently Modified Files**: List files with recent changes and what was modified
+   - **Active Investigation**: Current problems being debugged or features being implemented
    - Git status summary (files modified/added/deleted from `git status --porcelain`)
    - Current branch and recent commits
    - Todo list status (completed/in-progress/pending counts)
    - List any completed tasks from active todo list
-   - Brief summary of recent activities based on conversation context
+   - **Key Findings So Far**: Important discoveries made before session tracking began
+   - **Unresolved Issues**: Problems currently being investigated or blocked on
    - Note that session tracking started partway through work
 
 Use this format for the initial entry:
@@ -42,6 +48,24 @@ Use this format for the initial entry:
 ### Session Started - [timestamp]
 *Note: Session tracking began mid-conversation*
 
+**Current Context**: [Summary of what was being worked on when session started]
+
+**Recently Modified Files**:
+- path/to/file.ts: [what was changed and why]
+- config/settings.json: [configuration updates made]
+
+**Active Investigation**: [Current problem or feature being implemented]
+
+**Key Findings So Far**:
+- 🔍 [Important codebase discovery]
+- ⚠️ [Constraint or limitation found]
+- ✅ [Successful approach identified]
+
+**Unresolved Issues**:
+- [Problem currently being debugged]
+- [Question that needs research]
+- [Blocker preventing progress]
+
 **Current Git Status**:
 - Modified: [list files]
 - Added: [list files] 
@@ -50,8 +74,6 @@ Use this format for the initial entry:
 **Todo Progress**: [X completed, Y in progress, Z pending]
 - ✓ Completed: [list completed tasks]
 - 🔄 In Progress: [list active tasks]
-
-**Context Summary**: [Brief summary of work already done based on conversation]
 ```
 
 After creating the file, create or update `.claude/sessions/.current-session` to track the active session filename.
